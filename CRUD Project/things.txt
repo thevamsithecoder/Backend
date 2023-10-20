@@ -1,0 +1,54 @@
+app.use require a middleware function
+
+controlles : logic : connect with the database 
+
+when we use authentication everthing will be private 
+
+post method we can add things in the body : req.body we can print it will show undefined
+it showed error because we havent added parser, so when we send data from the client(here body)
+we need a body parser which is  a middleware
+
+what is error handling in express ?
+all the fields are required name,age, number, if any of this is not present then throw error
+
+ npm run dev run the project
+
+const createContact = (req, res)=>{
+    const {name, age, email} = req.body;
+    if(!name || !age || !email) {
+       //res.status(400).json({error : "All fields are mandatory!"})
+       res.status(400);
+       throw new Error("All fields are mandatory!"); 
+    }
+    console.log("the request body is ", req.body);
+    res.status(200).json({message : "create contact"});
+}
+Error: All fields are mandatory! I am getting an error like this with the HTML code so that
+
+
+I will create a error file where I handle my error codes 400, 404 
+
+const constants = {
+    VALIDATION_ERROR : 400,
+    UNAUTHORIZED : 401,
+    FORBIDDEN : 403,
+    NOT_FOUND : 404,
+    SERVER_ERROR : 500
+}
+
+module.exports = constants;
+
+
+when we use async we should use them in try catch block so that error will be arrested but 
+instead of using try catch block we have to install something called
+
+
+
+
+
+authentication:
+library is bcrypt, which is require for signup,
+jwt.io, it is require for signin 
+auth-bearer section I have to add the token 
+
+get the access token and use it in cotact route
